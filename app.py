@@ -255,9 +255,7 @@ def globalCases(req):
 
 
 def indiaCases(req):
-    sessionID = req.get("session")
-    session = re.compile("sessions/(.*)")
-    sessionID = session.findall(sessionID)[0]
+    
     result = req.get("queryResult")
     user_says = result.get("queryText")
     try:
