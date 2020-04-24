@@ -151,6 +151,9 @@ def getUserDetails(req, db):
 
     try:
         url = "https://api.postalpincode.in/pincode/" + pincode
+        return {
+            "fulfillmentText": url
+        }
         res = requests.get(url)
         jsonRes = res.json()
         postOffice = jsonRes[0]["PostOffice"]
