@@ -50,9 +50,7 @@ def webhook():
 
 
 def getCountryName(req):
-    sessionID = req.get("session")
-    session = re.compile("sessions/(.*)")
-    sessionID = session.findall(sessionID)[0]
+
     result = req.get("queryResult")
     user_says = result.get("queryText")
     country = result.get("parameters").get("country")
@@ -83,7 +81,13 @@ def getCountryName(req):
 
     except HTTPError as http_err:
         print(f"HTTP error occurred: {http_err}")
+        return {
+            "fulfillmentText": "lskdfj"
+        }
     except Exception as err:
+        return {
+            "fulfillmentText": "oihf"
+        }
         print(f"Other error occurred: {err}")
 
 
