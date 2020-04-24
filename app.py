@@ -36,7 +36,7 @@ def webhook():
         res = getUserDetails(req)
     elif intent_check == "GlobalCases_menu":
         res = globalCases(req)
-    elif intent_check == "IndiaCases":
+    elif intent_check == "indiaCases_menu":
         res = indiaCases(req)
     elif intent_check == "News":
         res = news(req)
