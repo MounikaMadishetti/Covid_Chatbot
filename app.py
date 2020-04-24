@@ -135,7 +135,7 @@ def getStateName(req):
         print(f"Other error occurred: {err}")
 
 
-def getUserDetails(req, db):
+def getUserDetails(req):
 
     result = req.get("queryResult")
     user_says = result.get("queryText")
