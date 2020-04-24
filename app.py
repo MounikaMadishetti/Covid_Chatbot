@@ -28,7 +28,7 @@ def webhook():
 
     intent_check = req.get("queryResult").get("intent").get("displayName")
 
-    if intent_check == "GetCountryName":
+    if intent_check == "CountryCases_menu":
         res = getCountryName(req)
     elif intent_check == "GetStateName":
         res = getStateName(req)
@@ -255,7 +255,7 @@ def globalCases(req):
 
 
 def indiaCases(req):
-    
+
     result = req.get("queryResult")
     user_says = result.get("queryText")
     try:
