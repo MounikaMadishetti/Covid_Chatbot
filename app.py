@@ -173,9 +173,19 @@ def getUserDetails(req, db):
             res1 = requests.get(url1)
             jsonRes1 = res1.json()
             stateDistrictData = jsonRes1
+            return {
+                "fulfillmentText": "A"
+            }
+
             for i in range(len(stateDistrictData)):
+                return {
+                    "fulfillmentText": "B"
+                }
                 stateDistrictData1 = stateDistrictData[i]
                 if stateDistrictData1["state"] == state:
+                    return {
+                        "fulfillmentText": "C"
+                    }
                     districtData = stateDistrictData1["districtData"]
                     for j in range(len(districtData)):
                         email_sender = EmailSender()
