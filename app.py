@@ -32,7 +32,7 @@ def webhook():
         res = getCountryName(req)
     elif intent_check == "StateCases_menu":
         res = getStateName(req)
-    elif intent_check == "GetUserDetails":
+    elif intent_check == "MyAreaCases_menu":
         res = getUserDetails(req)
     elif intent_check == "GlobalCases_menu":
         res = globalCases(req)
@@ -141,10 +141,10 @@ def getUserDetails(req, db):
     sessionID = session.findall(sessionID)[0]
     result = req.get("queryResult")
     user_says = result.get("queryText")
-    name = result.get("parameters").get("name")
-    email = result.get("parameters").get("email")
-    mobile = result.get("parameters").get("mobile")
-    pincode = result.get("parameters").get("pincode")
+    name = result.get("parameters").get("user_name")
+    email = result.get("parameters").get("user_mail")
+    mobile = result.get("parameters").get("user_phone")
+    pincode = result.get("parameters").get("user_pin")
     regex_email = "^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
     regex_mobile = "[0-9]{10}"
     regex_pincode = "[0-9]{6}"
