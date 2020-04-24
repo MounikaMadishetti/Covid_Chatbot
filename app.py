@@ -30,7 +30,7 @@ def webhook():
 
     if intent_check == "CountryCases_menu":
         res = getCountryName(req)
-    elif intent_check == "GetStateName":
+    elif intent_check == "StateCases_menu":
         res = getStateName(req)
     elif intent_check == "GetUserDetails":
         res = getUserDetails(req)
@@ -53,7 +53,7 @@ def getCountryName(req):
 
     result = req.get("queryResult")
     user_says = result.get("queryText")
-    country = result.get("parameters").get("country")
+    country = result.get("parameters").get("country_name")
     country = country.lower()
     country = country.title()
     try:
@@ -97,7 +97,7 @@ def getStateName(req):
     sessionID = session.findall(sessionID)[0]
     result = req.get("queryResult")
     user_says = result.get("queryText")
-    state = result.get("parameters").get("state")
+    state = result.get("parameters").get("state_name")
     state = state.lower()
     state = state.title()
     if "&" in state:
