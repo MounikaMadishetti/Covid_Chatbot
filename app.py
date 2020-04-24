@@ -136,9 +136,7 @@ def getStateName(req):
 
 
 def getUserDetails(req, db):
-    sessionID = req.get("session")
-    session = re.compile("sessions/(.*)")
-    sessionID = session.findall(sessionID)[0]
+
     result = req.get("queryResult")
     user_says = result.get("queryText")
     name = result.get("parameters").get("user_name")
@@ -148,27 +146,9 @@ def getUserDetails(req, db):
     regex_email = "^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
     regex_mobile = "[0-9]{10}"
     regex_pincode = "[0-9]{6}"
-    if re.search(regex_email, email) is None:
-        fulfillmentText = "Not a valid email. Please start again and enter valid email."
-        bot_says = fulfillmentText
 
-        return {
-            "fulfillmentText": fulfillmentText
-        }
-    if re.search(regex_mobile, mobile) is None:
-        fulfillmentText = "Not a valid mobile number. Please start again and enter valid mobile number."
-        bot_says = fulfillmentText
 
-        return {
-            "fulfillmentText": fulfillmentText
-        }
-    if re.search(regex_pincode, pincode) is None:
-        fulfillmentText = "Not a valid pincode. Please start again and enter valid pincode."
-        bot_says = fulfillmentText
 
-        return {
-            "fulfillmentText": fulfillmentText
-        }
     try:
         url = "https://api.postalpincode.in/pincode/" + pincode
         res = requests.get(url)
