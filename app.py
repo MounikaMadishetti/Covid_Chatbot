@@ -143,11 +143,11 @@ def getUserDetails(req, db):
     email = result.get("parameters").get("user_mail")
     mobile = result.get("parameters").get("user_phone")
     pincode = result.get("parameters").get("user_pin")
-    regex_email = "^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
-    regex_mobile = "[0-9]{10}"
-    regex_pincode = "[0-9]{6}"
 
 
+    return {
+        "fulfillmentText": "hello"
+    }
 
     try:
         url = "https://api.postalpincode.in/pincode/" + pincode
