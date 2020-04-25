@@ -16,7 +16,7 @@ class EmailSender:
             self.msg = MIMEMultipart()
 
             # storing the senders email address
-            self.msg['From'] = "WeBlaze <nyla.chatbot@gmail.com>"
+            self.msg['From'] = "Team Covid-19 bot <nyla.chatbot@gmail.com>"
 
             # storing the receivers email address
             self.msg['To'] = email
