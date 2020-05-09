@@ -51,16 +51,15 @@ def webhook():
 
 
 def helpLine(req):
-
+    return {
+        "fulfillmentText": "hello1"
+    }
     result = req.get("queryResult")
     user_says = result.get("queryText")
     state = result.get("parameters").get("state_name")
     state = state.lower()
     state = state.title()
-    if "&" in state:
-        state = state.replace("&", "and")
-    if state == "Tamilnadu":
-        state = "Tamil Nadu"
+
 
     try:
         return {
@@ -74,7 +73,7 @@ def helpLine(req):
             if stateWiseCases[i]["loc"] == state:
 
                 helpLineNum = str(stateWiseCases[i]["deaths"])
-                fulfillmentText =  "Help Line number of " + state + "is" + helpLineNum
+                fulfillmentText = "Help Line number of " + state + "is" + helpLineNum
                 bot_says = fulfillmentText
 
                 return {
