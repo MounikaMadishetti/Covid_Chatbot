@@ -40,6 +40,8 @@ def webhook():
         res = indiaCases(req)
     elif intent_check == "News":
         res = news(req)
+    elif intent_check == "Helpline_menu":
+        res = helpLine(req)
 
     res = json.dumps(res, indent=4)
     r = make_response(res)
@@ -48,6 +50,45 @@ def webhook():
 
 
 
+def helpLine(req):
+
+    result = req.get("queryResult")
+    user_says = result.get("queryText")
+    state = result.get("parameters").get("state_name")
+    state = state.lower()
+    state = state.title()
+    if "&" in state:
+        state = state.replace("&", "and")
+    if state == "Tamilnadu":
+        state = "Tamil Nadu"
+
+    try:
+        url = "https://api.rootnet.in/covid19-in/contacts.json"
+        res = requests.get(url)
+        jsonRes = res.json()
+        stateWiseCases = jsonRes["regional"]
+        for i in range(len(stateWiseCases)):
+            if stateWiseCases[i]["loc"] == state:
+
+                helpLineNum = str(stateWiseCases[i]["deaths"])
+                fulfillmentText =  "Help Line number of " + state + "is" + helpLineNum
+                bot_says = fulfillmentText
+
+                return {
+                    "fulfillmentText": fulfillmentText
+                }
+        else:
+            fulfillmentText = "Sorry we could not find any state named " + state + ". It might be a misspelling or we don't have record of the state."
+            bot_says = fulfillmentText
+
+            return {
+                "fulfillmentText": fulfillmentText
+            }
+
+    except HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+    except Exception as err:
+        print(f"Other error occurred: {err}")
 
 
 def getCountryName(req):
