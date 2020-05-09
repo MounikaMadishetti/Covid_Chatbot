@@ -63,6 +63,9 @@ def helpLine(req):
         state = "Tamil Nadu"
 
     try:
+        return {
+            "fulfillmentText": "hello"
+        }
         url = "https://api.rootnet.in/covid19-in/contacts.json"
         res = requests.get(url)
         jsonRes = res.json()
