@@ -51,9 +51,6 @@ def webhook():
 
 
 def helpLine(req):
-    return {
-        "fulfillmentText": "hello1"
-    }
     result = req.get("queryResult")
     user_says = result.get("queryText")
     state = result.get("parameters").get("state_name")
@@ -62,9 +59,6 @@ def helpLine(req):
 
 
     try:
-        return {
-            "fulfillmentText": "hello"
-        }
         url = "https://api.rootnet.in/covid19-in/contacts.json"
         res = requests.get(url)
         jsonRes = res.json()
