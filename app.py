@@ -40,7 +40,7 @@ def webhook():
         res = indiaCases(req)
     elif intent_check == "News":
         res = news(req)
-    elif intent_check == "Helpline_menu":
+    elif intent_check == "Helpline_Menu":
         res = helpLine(req)
 
     res = json.dumps(res, indent=4)
