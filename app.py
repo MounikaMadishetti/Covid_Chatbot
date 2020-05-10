@@ -56,7 +56,10 @@ def helpLine(req):
     state = result.get("parameters").get("state_name")
     state = state.lower()
     state = state.title()
-
+    if "&" in state:
+        state = state.replace("&", "and")
+    if state == "Tamilnadu":
+        state = "Tamil Nadu"
     try:
 
         url = "https://api.rootnet.in/covid19-in/contacts.json"
@@ -72,7 +75,7 @@ def helpLine(req):
 
             if stateWiseCases[i]["loc"] == state:
                 helpLineNum = str(stateWiseCases[i]["number"])
-                fulfillmentText = "Help Line number of " + state + "is" + helpLineNum
+                fulfillmentText = "Help Line number of " + state + "is : " + helpLineNum
                 bot_says = fulfillmentText
 
                 return {
