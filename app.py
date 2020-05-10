@@ -60,9 +60,7 @@ def helpLine(req):
     try:
 
         url = "https://api.rootnet.in/covid19-in/contacts.json"
-        return {
-            "fulfillmentText": url 
-        }
+        
         res = requests.get(url)
         jsonRes = res.json()
         return {
