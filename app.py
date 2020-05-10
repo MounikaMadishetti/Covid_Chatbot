@@ -63,8 +63,15 @@ def helpLine(req):
         res = requests.get(url)
         jsonRes = res.json()
         stateWiseCases = jsonRes["regional"]
+
         for i in range(len(stateWiseCases)):
+            return {
+                "fulfillmentText": "pranay"
+            }
             if stateWiseCases[i]["loc"] == state:
+                return {
+                    "fulfillmentText": "mounika"
+                }
 
                 helpLineNum = str(stateWiseCases[i]["deaths"])
                 fulfillmentText = "Help Line number of " + state + "is" + helpLineNum
