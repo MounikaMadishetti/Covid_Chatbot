@@ -65,8 +65,9 @@ def helpLine(req):
         jsonRes = res.json()
 
         stateWiseCase = jsonRes["data"]
+        contacts = stateWiseCase["contacts"]
         return {
-            "fulfillmentText": str(stateWiseCase)
+            "fulfillmentText": str(contacts)
         }
         stateWiseCases = stateWiseCase["regional"]
         return {
