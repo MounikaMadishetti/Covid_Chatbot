@@ -63,7 +63,9 @@ def helpLine(req):
         res = requests.get(url)
         jsonRes = res.json()
         stateWiseCases = jsonRes["regional"]
-
+        return {
+            "fulfillmentText": "pranayyyyy"
+        }
         for i in range(len(stateWiseCases)):
             return {
                 "fulfillmentText": "pranay"
