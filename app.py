@@ -71,11 +71,7 @@ def helpLine(req):
         for i in range(len(stateWiseCases)):
 
             if stateWiseCases[i]["loc"] == state:
-                return {
-                    "fulfillmentText": state
-                }
-
-                helpLineNum = str(stateWiseCases[i]["deaths"])
+                helpLineNum = str(stateWiseCases[i]["number"])
                 fulfillmentText = "Help Line number of " + state + "is" + helpLineNum
                 bot_says = fulfillmentText
 
