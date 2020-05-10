@@ -60,9 +60,18 @@ def helpLine(req):
     try:
 
         url = "https://api.rootnet.in/covid19-in/contacts.json"
+        return {
+            "fulfillmentText": url 
+        }
         res = requests.get(url)
         jsonRes = res.json()
+        return {
+            "fulfillmentText": jsonRes
+        }
         stateWiseCase = jsonRes["data"]
+        return {
+            "fulfillmentText": stateWiseCases
+        }
         stateWiseCases = stateWiseCase["regional"]
         return {
             "fulfillmentText": "pranayyyyy"
