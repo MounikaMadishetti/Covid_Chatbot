@@ -56,7 +56,9 @@ def helpLine(req):
     state = result.get("parameters").get("state_name")
     state = state.lower()
     state = state.title()
-
+    return {
+        "fulfillmentText": state 
+    }
 
     try:
         url = "https://api.rootnet.in/covid19-in/contacts.json"
